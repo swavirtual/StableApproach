@@ -1,0 +1,142 @@
+{
+    "enabled": "true",
+    "acf": {
+        "icao": "B737",
+        "author": "SWA FLT OPS"
+    },
+    "speed": {
+        "taxi": "30"
+    },
+    "height": {
+        "check": {
+            "vis": "1000",
+            "ils": "1000"
+        }
+    },
+    "autoUpdate": "false",
+    "requirements": {
+        "requirement": {
+            "name": "MCP Zeroed",
+            "primaryCondition": "$laminar\/B738\/autopilot\/mcp_alt_dial < 100.000000",
+            "primaryMarker": "63"
+        },
+        "requirement": {
+            "name": "START SWITCHES",
+            "primaryCondition": "$laminar\/B738\/engine\/starter1_pos > 1 and\n$laminar\/B738\/engine\/starter2_pos > 1 \nand $laminar\/B738\/toggle_switch\/eng_start_source = -1.000000",
+            "primaryMarker": "63"
+        },
+        "requirement": {
+            "name": "SPDBRK ARM",
+            "primaryCondition": "$laminar\/B738\/annunciator\/speedbrake_armed = 1.000000\nand \n$laminar\/B738\/flt_ctrls\/speedbrake_lever = 0.088900\nand \n$laminar\/B738\/flt_ctrls\/speedbrake_lever_stop = 1.000000",
+            "primaryMarker": "7"
+        },
+        "requirement": {
+            "name": "DOWN, 3 GREEN",
+            "primaryCondition": "$sim\/cockpit2\/controls\/gear_handle_down == 1\nand\n$sim\/cockpit2\/annunciators\/gear_unsafe == 0",
+            "primaryMarker": "63"
+        },
+        "requirement": {
+            "name": "FLAPS",
+            "primaryCondition": "$sim\/flightmodel2\/wing\/flap1_deg >= 35.000000 and $sim\/flightmodel2\/wing\/flap2_deg >= 35.000000 \nor\n$sim\/flightmodel2\/wing\/flap1_deg >= 48.000000 and $sim\/flightmodel2\/wing\/flap2_deg = 48.000000 ",
+            "primaryMarker": "63"
+        },
+        "requirement": {
+            "name": "AUTOBRAKE",
+            "primaryCondition": "$laminar\/B738\/autobrake\/autobrake_pos == 1.000000\nor\n$laminar\/B738\/autobrake\/autobrake_pos == 3.000000\nor\n$laminar\/B738\/autobrake\/autobrake_pos == 4.000000\nor\n$laminar\/B738\/autobrake\/autobrake_pos == 5.000000",
+            "primaryMarker": "31"
+        },
+        "requirement": {
+            "name": "A\/P Off",
+            "primaryCondition": "$laminar\/B738\/autopilot\/cws_a_pos = 0.000000\nand\n$laminar\/B738\/autopilot\/cws_b_pos = 0.000000\nand\n$laminar\/B738\/autopilot\/cmd_a_status = 0.000000\nand\n$laminar\/B738\/autopilot\/cmd_b_status = 0.000000",
+            "primaryMarker": "60"
+        },
+        "requirement": {
+            "name": "A\/T Off",
+            "primaryCondition": "$laminar\/B738\/autopilot\/autothrottle_status = 0.000000",
+            "primaryMarker": "60"
+        },
+        "requirement": {
+            "name": "LOC DEV",
+            "primaryCondition": "$analysis.app.loc_dev.max <= 2.5"
+        },
+        "requirement": {
+            "name": "G\/S DEV",
+            "primaryCondition": "$analysis.app.gs_dev.max <= 2"
+        },
+        "requirement": {
+            "name": "VTARGET SET",
+            "primaryCondition": "$laminar\/B738\/autopilot\/mcp_speed_dial_kts = $laminar\/B738\/FMS\/vref + $laminar\/B738\/FMS\/approach_wind_corr",
+            "primaryMarker": "15"
+        },
+        "requirement": {
+            "name": "SINKRATE",
+            "primaryCondition": "$analysis.app.sinkrate.max > -1050",
+            "primaryMarker": "7"
+        },
+        "requirement": {
+            "name": "No Tailstrike",
+            "primaryCondition": "$analysis.touchdown_combined.pitch.max < 10.5\nand\n$analysis.rollout.pitch.max < 10.5"
+        },
+        "requirement": {
+            "name": "ON RWY",
+            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.min > 0 and\n$analysis.rollout.centerline_dist.max < (($analysis.rwy.width \/ 2) - 1) and\n$analysis.rollout.rwy_remaining > 0",
+            "primaryMarker": "28"
+        },
+        "requirement": {
+            "name": "SAFE FLARE",
+            "primaryCondition": "$analysis.touchdown_combined.pitch.min > 0.49"
+        },
+        "requirement": {
+            "name": "Inside TDZ (> 7000FT RWY)",
+            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < $analysis.rwy.length.tdz -259.9944 and\n$analysis.touchdown_combined.threshold_dist.min > 0"
+        },
+        "requirement": {
+            "name": "MIN REQD FUEL",
+            "primaryCondition": "$sim\/flightmodel\/weight\/m_fuel_total >= 1996.000000",
+            "primaryMarker": "8"
+        },
+        "requirement": {
+            "name": "DEPLOYED",
+            "primaryCondition": "$sim\/cockpit2\/annunciators\/reverser_deployed == 3.000000",
+            "primaryMarker": "16"
+        },
+        "requirement": {
+            "name": "EXTENDED",
+            "primaryCondition": "$laminar\/B738\/flt_ctrls\/speedbrake_lever >= 0.869415\nand\n$sim\/cockpit2\/controls\/speedbrake_ratio >= 0.996078",
+            "primaryMarker": "48"
+        },
+        "requirement": {
+            "name": "NO HARD LDG (fpm)",
+            "primaryCondition": "$analysis.touchdown_combined.fpm_agl.max > -600"
+        },
+        "requirement": {
+            "name": "NO HARD LDG (g)",
+            "primaryCondition": "$analysis.touchdown_combined.g_vertical.max < 2.1"
+        },
+        "requirement": {
+            "name": "No P\/B",
+            "primaryCondition": "$laminar\/B738\/parking_brake_pos == 0.000000",
+            "primaryMarker": "60"
+        },
+        "requirement": {
+            "name": "VTARGET",
+            "primaryCondition": "$laminar\/B738\/FMS\/vref + $laminar\/B738\/FMS\/approach_wind_corr -6 <= $sim\/flightmodel\/position\/indicated_airspeed\nand\n$laminar\/B738\/FMS\/vref + $laminar\/B738\/FMS\/approach_wind_corr +11 >= $sim\/flightmodel\/position\/indicated_airspeed",
+            "primaryMarker": "3"
+        },
+        "requirement": {
+            "name": "VREF",
+            "primaryCondition": "$laminar\/B738\/FMS\/vref -6 <= $sim\/flightmodel\/position\/indicated_airspeed\nand\n$laminar\/B738\/FMS\/vref +6 >= $sim\/flightmodel\/position\/indicated_airspeed",
+            "primaryMarker": "8"
+        },
+        "requirement": {
+            "name": "Inside TDZ (< 7000FT RWY)",
+            "primaryCondition": "$analysis.touchdown_combined.threshold_dist.max < ($analysis.rwy.length.tdz -113.69) and\n$analysis.touchdown_combined.threshold_dist.min > 0"
+        },
+        "requirement": {
+            "name": "TRANSPONDER",
+            "primaryCondition": "$laminar\/B738\/knob\/transponder_pos = 5.000000",
+            "primaryMarker": "63"
+        }
+    },
+    "hash": ""
+}
