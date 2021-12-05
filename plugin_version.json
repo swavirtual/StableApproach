@@ -6,6 +6,6 @@
   "report_server": {
     "enabled": true,
     "host":"swavirtual.com",
-    "target":"/stableapproach"
+    "target":"/wn/stableapproach"
   }
 }
