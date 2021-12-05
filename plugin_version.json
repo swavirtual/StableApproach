@@ -5,9 +5,9 @@
   },
   "va":{
     "report_server":{
-      "enabled": false,
-      "host": "api.stableapproach.net",
-      "target": "/report"
+      "enabled": true,
+      "host": "swavirtual.com",
+      "target": "/wn/stableapproach"
     },
     "aircraft_profiles":{
       "use_custom": true,
