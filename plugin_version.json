@@ -8,9 +8,9 @@
       "enabled": true,
       "host": "swavirtual.com",
       "target": "/wn/stableapproach/index.php"
-    },
+    },,
     "aircraft_profiles":{
-      "use_custom": false,
+      "use_custom": true,
       "revert_to_default": true
     }
   }
